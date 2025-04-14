@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asha A.I. Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="chat-container">
+        <h1>Asha AI Bot 🚀</h1>
+        <div class="chat-box" id="chat-box">
+            <div class="message bot">Hey there! 👋 Welcome to ASHA A.I.!, your virtual guide for exploring career
+                opportunities,
+                especially for women in India. How can I assist you today? ✨</div>
+        </div>
+        <div class="message bot typing-indicator" id="typing-indicator" style="display: none;">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="suggestions-container" id="suggestions-container"></div>
+        <div class="chat-input">
+            <button id="mic-button" title="Use Voice Input" aria-label="Use voice input"><i
+                    class="ri-mic-ai-line"></i></button> <textarea id="user-input"
+                placeholder="Ask about jobs, interviews..." rows="1" aria-label="Chat input"></textarea>
+            <button id="send-button" aria-label="Send message">Send</button>
+            <button id="clear-button" title="Clear Chat History" aria-label="Clear chat history">Clear</button>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: false, theme: 'neutral' }); 
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+</body>
+
+</html>
