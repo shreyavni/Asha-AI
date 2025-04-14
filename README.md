@@ -1,5 +1,5 @@
-# Asha Ai🚀 - by Avni Shukla
-an ai developed by--
+# Asha AI🚀 - by Avni Shukla
+an ai developed by-- Avni Shukla
 
 ## How to run
 ### 1. Open Chatbot directory
