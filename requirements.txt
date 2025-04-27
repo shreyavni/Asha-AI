@@ -1,4 +1,8 @@
 google-generativeai
-requests
 Flask
 python-dotenv
+requests
+Flask-Login
+Flask-SQLAlchemy
+Werkzeug
+Authlib
