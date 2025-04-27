@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asha AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .button {
+            background-image: linear-gradient(to bottom right, #6ee7b7, #3b82f6);
+            color: white;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            position: relative;
+            /* Needed for absolute positioning of the fill layer */
+            overflow: hidden;
+            background-position-x: -15px;
+            /*hide the overflowed part of fill animation*/
+        }
+
+        .button:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0 0.75rem 1.25rem rgba(0, 0, 0, 0.3);
+            animation: BTN .5s ease-in-out 1 forwards;
+        }
+        /* @keyframes BTN {    
+            0% {
+                
+            background-position-x: 0%;
+            }
+            100%{
+                background-position-x: 350px;
+            }
+        } */
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+        }
+
+        .text-shadow {
+            text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover .fill-layer {
+            opacity: 1;
+        }
+
+        .button-text {
+            position: relative;
+            /* Bring the text to the front */
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-r from-blue-100 to-purple-100 flex justify-center items-center min-h-screen p-4 overflow-hidden">
+    <div class="container rounded-lg shadow-xl p-8 max-w-2xl w-full text-center">
+        <h1 class="text-3xl font-semibold text-blue-600 mb-4 text-shadow" id="heading">Welcome to Asha AI</h1>
+        <p class="text-gray-700 mb-6" id="tagline">Your Intelligent Assistant</p>
+        <div class="flex justify-center space-x-4" id="buttons">
+            <a href="/login">
+                <button class="button" id="learnMore">
+                <span class="button-text">Learn More</span>
+            </button></a>
+            <a href="/chatapp">
+            <button class="button" id="getStart">
+                <span class="button-text">Get Started</span>
+            </button>
+            </a>
+        </div>
+        <div class="mt-8" id="socialLinks">
+            <p class="text-gray-600 text-sm">Connect with Asha AI:</p>
+            <div class="flex justify-center mt-2 space-x-4">
+                <a href="#" class="text-blue-400 hover:text-blue-600 transition duration-300">Twitter</a>
+                <a href="#" class="text-purple-400 hover:text-purple-600 transition duration-300">GitHub</a>
+                <a href="#" class="text-pink-400 hover:text-pink-600 transition duration-300">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // --- GSAP Animations ---
+        gsap.from(".container", { opacity: 0, y: 50, duration: 1, ease: "easeInOut" });
+        gsap.from("#heading", { opacity: 0, y: -20, duration: 0.8, delay: 0.5, ease: "easeInOut" });
+        gsap.from("#tagline", { opacity: 0, duration: 0.8, delay: 0.7, ease: "easeInOut" });
+        gsap.from("#buttons", { opacity: 0, scale: 0.8, duration: 1, delay: 0.9, ease: "easeInOut" });
+
+        gsap.from("#socialLinks", { opacity: 0, y: 20, duration: 0.8, delay: 1.1, ease: "easeInOut" });
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, { backgroundPositionX:'350px', duration: 0.1 });
+            })
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, { backgroundPositionX: '-15px', duration: 0.1 });
+            })
+        })
+        // Button hover effects
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, { scale: 1.05, y: -5, boxShadow: '0 0.75rem 1.25rem rgba(0, 0, 0, 0.3)', duration: 0.2 });
+            });
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, { scale: 1, y: 0, boxShadow: '0 0.5rem 1rem rgba(0, 0, 0, 0.2)', duration: 0.2 });
+            });
+            button.addEventListener('click', () => {
+                gsap.to(button, { scale: 0.95, y: 0, boxShadow: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.3)', duration: 0.1 });
+            });
+        });
+
+        // 3D effect (using mouse position)
+        document.addEventListener('mousemove', (event) => {
+            const x = (window.innerWidth / 2 - event.clientX) / 20;
+            const y = (window.innerHeight / 2 - event.clientY) / 20;
+
+            gsap.to(".container", {
+                rotationX: y * 0.15,
+                rotationY: x * 0.15,
+                perspective: 800,
+                duration: 0.1,
+                ease: "linear"
+            });
+        });
+    </script>
+</body>
+
+</html>

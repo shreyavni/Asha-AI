@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Asha AI🚀</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "poppins";
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background: linear-gradient(45deg, #098dc1, 60%, #f417de); */
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
+
+        .container {
+            height: 650px;
+            width: 410px;
+            background: #eee;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .Form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        input {
+            accent-color: #A93DD5 !important;
+        }
+
+        .login-form {
+            position: absolute;
+            transform: translateX(0px);
+            transition: .5s ease;
+
+        }
+
+        .login-form.active {
+            transform: translateX(-410px);
+        }
+
+        .Register-form {
+            transform: translateX(410px);
+            transition: .5s ease;
+
+        }
+
+        .Register-form.active {
+            transform: translateX(0);
+        }
+
+        h2 {
+            color: #333;
+            font-size: 32px;
+        }
+
+        .input-box {
+            margin: 45px 0;
+            height: 40px;
+            width: 300px;
+            border-bottom: 2px solid rgba(0, 0, 0, .5);
+            position: relative;
+        }
+
+        .input-box input {
+            width: 90%;
+            height: 100%;
+            float: right;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            color: rgba(0, 0, 0, .9);
+
+            padding: 5px 0;
+            background: transparent;
+        }
+
+        .input-box label {
+            position: absolute;
+            left: 0;
+            transform: translateY(-56%);
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 0px;
+            transform: translateY(75%);
+            font-size: 22px;
+            color: rgba(0, 0, 0, .5);
+            bottom: 23px;
+        }
+
+        input::placeholder {
+            font-size: 13px;
+        }
+
+        input#checked {
+            margin-right: 3px;
+        }
+
+        .forgot-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: -20px;
+        }
+
+        .forgot-section span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .forgot-section span a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px;
+            margin-top: 20px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            background: linear-gradient(45deg, #098dc1, 60%, #f417de);
+            font-size: 19px;
+            font-weight: 500;
+            color: #eee;
+            position: relative;
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0%;
+            height: 100%;
+            width: 00%;
+            background: linear-gradient(45deg, #f417de, 60%, #098dc1);
+            transition: .5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: #eee;
+        }
+
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        p {
+            color: rgba(0, 0, 0, .5);
+            font-size: 13px;
+            font-weight: 500;
+            margin: 25px 0;
+        }
+
+        .social-media {
+            display: flex;
+            text-decoration: none;
+            color: #098dc1;
+            background-color: white;
+            padding: 4px 10px;
+            border-radius: 16px;
+            box-shadow: 0px 0px 5px #098dc1;
+            transition: all .5s ease;
+        }
+
+        .social-media:hover {
+
+            box-shadow: 0px 0px 10px #098dc1;
+            background-color: #098dc1;
+            color: white;
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .social-media i {
+            font-size: 28px;
+            margin-left: 15px;
+            padding: 5px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .social-media i:nth-child(1) {
+            color: #eee;
+            background: #1822dd;
+            border-radius: 50%;
+            border: 2px solid #eee;
+        }
+
+        .social-media i:nth-child(1):hover {
+            background: #eee;
+            color: #1822dd;
+            border: 2px solid #1822dd;
+        }
+
+        .social-media i:nth-child(2) {
+            color: #eee;
+            background: #f00;
+            border-radius: 50%;
+            border: 2px solid #eee;
+        }
+
+        .social-media i:nth-child(2):hover {
+            background: #eee;
+            color: #f00;
+            border: 2px solid #f00;
+        }
+
+        .social-media i:nth-child(3) {
+            color: #eee;
+            background: #098dc1;
+            border-radius: 50%;
+            border: 2px solid #eee;
+        }
+
+        .social-media i:nth-child(3):hover {
+            background: #eee;
+            color: #098dc1;
+            border: 2px solid #098dc1;
+        }
+
+        .RegisteBtn a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+
+        @media(max-width: 768px) {
+            .container {
+                height: 500px;
+                width: 380px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .input-box {
+                margin: 34px 0;
+                height: 35px;
+                width: 300px;
+            }
+
+            .input-box label {
+                font-size: 13px;
+
+            }
+
+            .input-box input {
+                font-size: 13px;
+            }
+
+            .input-box i {
+
+                font-size: 18px;
+
+            }
+
+            input::placeholder {
+                font-size: 13px;
+            }
+
+            .forgot-section span {
+                font-size: 12px;
+            }
+
+            input#checked {
+                margin-right: 2px;
+                height: 15px;
+            }
+
+            .btn {
+                height: 35px;
+                font-size: 15px;
+            }
+
+            p {
+                font-size: 11px;
+            }
+
+            .social-media i {
+                font-size: 20px;
+
+            }
+
+            .RegisteBtn a {
+                text-decoration: none;
+                font-size: 13px;
+            }
+
+        }
+
+        @media(max-width: 480px) {
+            .container {
+                height: 450px;
+                width: 310px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .input-box {
+                margin: 20px 0;
+                height: 35px;
+                width: 220px;
+            }
+
+            .input-box label {
+                font-size: 12px;
+
+            }
+
+            .input-box input {
+                font-size: 12px;
+            }
+
+            .input-box i {
+
+                font-size: 16px;
+
+            }
+
+            input::placeholder {
+                font-size: 10px;
+            }
+
+            .forgot-section span {
+                font-size: 9px;
+            }
+
+            input#checked {
+                margin-right: 2px;
+                height: 10px;
+            }
+
+            .btn {
+                height: 25px;
+                font-size: 12px;
+            }
+
+            p {
+                font-size: 11px;
+            }
+
+            .social-media i {
+                font-size: 18px;
+
+            }
+
+            .RegisteBtn a {
+                text-decoration: none;
+                font-size: 11px;
+            }
+
+        }
+
+        @media(max-width:365px) {
+            .container {
+                height: 420px;
+                width: 280px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .input-box {
+                margin: 20px 0;
+                height: 35px;
+                width: 200px;
+            }
+
+            .social-media i {
+                font-size: 16px;
+
+            }
+
+            .RegisteBtn a {
+                text-decoration: none;
+                font-size: 9px;
+            }
+
+        }
+    </style>
+    <style>
+        /* .alert {
+            padding: 0.75rem 1.25rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        } */
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            z-index: 10;
+        }
+        body{
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .header{
+            /* position: absolute;
+            top:0px;
+            left: 0px; */
+            background-color: #098dc1;
+            width: 100vw;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            margin-top: 0;
+        }
+        .header a{
+            color:#fff;
+            text-shadow: 0px 0px 10px  black;
+        }
+        input[type="checkbox"]{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    {# Include the partial for flash messages if you create one #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="header">
+        <a href="/">
+        Asha AI🚀</a>
+    </div>
+    <div class="container">
+        <div class="Form login-form">
+            <h2>Login</h2>
+            <form method="POST" action="{{ url_for('login') }}" class="max-w-sm mx-auto">
+                <div class="input-box">
+                    <i class='bx bxs-user'></i>
+                    <label for="#">Username</label>
+                    <input type="text" placeholder="Enter Your Username*" name="username" required>
+
+
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-envelope'></i>
+                    <input type="password" placeholder="Enter Your Password*" name="password" required>
+                    <label for="#">Password</label>
+
+                </div>
+                <div class="forgot-section">
+                    <span><input type="checkbox" name="remember" id="checked"><label for="checked">Remember Me</label></span>
+                </div>
+                <button class="btn">Login</button>
+            </form>
+            <p>Or</p>
+            <a href="/google/login">
+                <div class="social-media" style="display: flex;align-items: center;"><img
+                        src="data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M17.4612 7.21757H16.751V7.18098H8.81632V10.7075H13.7989C13.072 12.7604 11.1187 14.234 8.81632 14.234C5.89503 14.234 3.52653 11.8655 3.52653 8.94425C3.52653 6.02296 5.89503 3.65446 8.81632 3.65446C10.1648 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1385 0.12793 8.81632 0.12793C3.94751 0.12793 0 4.07544 0 8.94425C0 13.8131 3.94751 17.7606 8.81632 17.7606C13.6851 17.7606 17.6326 13.8131 17.6326 8.94425C17.6326 8.35311 17.5718 7.77609 17.4612 7.21757Z' fill='%23FFC107' /%3E%3Cpath d='M1.0166 4.84069L3.9132 6.96498C4.69697 5.02451 6.59513 3.65446 8.8164 3.65446C10.1649 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1386 0.12793 8.8164 0.12793C5.43005 0.12793 2.49333 2.03975 1.0166 4.84069Z' fill='%23FF3D00' /%3E%3Cpath d='M8.8165 17.7612C11.0938 17.7612 13.1629 16.8897 14.7274 15.4725L11.9988 13.1635C11.0839 13.8593 9.96591 14.2356 8.8165 14.2347C6.52338 14.2347 4.57629 12.7725 3.84278 10.7319L0.967773 12.947C2.42687 15.8022 5.39004 17.7612 8.8165 17.7612Z' fill='%234CAF50' /%3E%3Cpath d='M17.4612 7.21823H16.7511V7.18164H8.81641V10.7082H13.7989C13.4512 11.6852 12.8249 12.539 11.9973 13.164L11.9987 13.1631L14.7273 15.4721C14.5342 15.6475 17.6327 13.3531 17.6327 8.9449C17.6327 8.35377 17.5719 7.77674 17.4612 7.21823Z' fill='%231976D2' /%3E%3C/svg%3E%0A"
+                        alt="google-btn" style="background-color: #fff; padding: 5px; border-radius: 50%;">
+                    <span>&nbsp;Login with Google</span>
+                </div>
+            </a>
+            <p class="RegisteBtn RegiBtn" style="text-decoration: underline;text-decoration-color: #098dc1;"><a href="#">Register Now</a></p>
+        </div>
+        <div class="Form Register-form">
+            <h2>Register</h2>
+            <form method="POST" action="{{ url_for('register') }}" class="max-w-sm mx-auto" autocomplete="off">
+                <div class="input-box">
+                    <i class='bx bxs-user'></i>
+                    <label for="#">Username</label>
+                    <input type="text" placeholder="Enter Your Username*" name="username" required>
+
+
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-envelope'></i>
+                    <input type="email" placeholder="Enter Your Email*" name="email" required>
+                    <label for="#">Email</label>
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-lock'></i>
+                    <input type="password" placeholder="Enter Your Password*" name="password" required>
+                    <label for="#">Password</label>
+                </div>
+
+                <div class="forgot-section">
+                    <span><a href="#">Forgot Password ?</a></span>
+                </div>
+                <button class="btn" class="loginBtn">Register</button>
+            </form>
+            <p>Or</p>
+            <a href="/google/login">
+                <div class="social-media" style="display:  flex;align-items: center;"><img
+                        src="data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M17.4612 7.21757H16.751V7.18098H8.81632V10.7075H13.7989C13.072 12.7604 11.1187 14.234 8.81632 14.234C5.89503 14.234 3.52653 11.8655 3.52653 8.94425C3.52653 6.02296 5.89503 3.65446 8.81632 3.65446C10.1648 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1385 0.12793 8.81632 0.12793C3.94751 0.12793 0 4.07544 0 8.94425C0 13.8131 3.94751 17.7606 8.81632 17.7606C13.6851 17.7606 17.6326 13.8131 17.6326 8.94425C17.6326 8.35311 17.5718 7.77609 17.4612 7.21757Z' fill='%23FFC107' /%3E%3Cpath d='M1.0166 4.84069L3.9132 6.96498C4.69697 5.02451 6.59513 3.65446 8.8164 3.65446C10.1649 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1386 0.12793 8.8164 0.12793C5.43005 0.12793 2.49333 2.03975 1.0166 4.84069Z' fill='%23FF3D00' /%3E%3Cpath d='M8.8165 17.7612C11.0938 17.7612 13.1629 16.8897 14.7274 15.4725L11.9988 13.1635C11.0839 13.8593 9.96591 14.2356 8.8165 14.2347C6.52338 14.2347 4.57629 12.7725 3.84278 10.7319L0.967773 12.947C2.42687 15.8022 5.39004 17.7612 8.8165 17.7612Z' fill='%234CAF50' /%3E%3Cpath d='M17.4612 7.21823H16.7511V7.18164H8.81641V10.7082H13.7989C13.4512 11.6852 12.8249 12.539 11.9973 13.164L11.9987 13.1631L14.7273 15.4721C14.5342 15.6475 17.6327 13.3531 17.6327 8.9449C17.6327 8.35377 17.5719 7.77674 17.4612 7.21823Z' fill='%231976D2' /%3E%3C/svg%3E%0A"
+                        alt="google-btn" style="background-color: #fff; padding: 5px; border-radius: 50%;">
+                    <span>&nbsp;Continue with Google</span>
+                </div>
+            </a>
+            <p class="LoginBtn" style="text-decoration: underline;text-decoration-color: #098dc1;"><a href="#">Login Now</a></p>
+        </div>
+    </div>
+    <script>
+        // Get references to the container and form elements
+        const container = document.querySelector(".container");
+        const loginForm = document.querySelector('.login-form');
+        const RegisterForm = document.querySelector('.Register-form');
+        const RegiBtn = document.querySelector('.RegiBtn');
+        const LoginBtn = document.querySelector('.LoginBtn');
+
+        // Function to switch to the Register form
+        const showRegisterForm = () => {
+            RegisterForm.classList.add('active');
+            loginForm.classList.add('active');
+        };
+
+        // Function to switch to the Login form
+        const showLoginForm = () => {
+            RegisterForm.classList.remove('active');
+            loginForm.classList.remove('active');
+        };
+
+        // Add event listeners for the existing buttons to switch forms
+        RegiBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            showRegisterForm();
+        });
+
+        LoginBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            showLoginForm();
+        });
+
+        // Check URL parameters on page load to determine which form to show initially
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            // Get the value of the 'reg' parameter
+            const regParam = urlParams.get('reg');
+
+            // If 'reg' parameter exists and is 'true', show the register form
+            if (regParam === 'true') {
+                showRegisterForm();
+            } else {
+                // Otherwise, show the login form by default
+                showLoginForm();
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -8,11 +8,115 @@
      padding: 0;
      background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
      /* Gradient background */
+     height: 100vh;
+
      display: flex;
-     justify-content: center;
+     flex-direction: column;
+     justify-content: space-between;
      align-items: center;
      min-height: 100vh;
      color: #333;
+ }
+
+ nav ul {
+     display: flex;
+     list-style: none;
+     gap: 10px;
+     padding: 1.5rem;
+     margin-top: 2rem;
+ }
+
+ nav ul li a {
+     text-decoration: none;
+     font-size: 30px;
+     color: #fff;
+     padding: 0.5rem 1rem;
+     border-radius: 4px;
+     transition: background-color 0.3s ease;
+ }
+
+ nav ul li a:hover {
+     background-color: rgba(255, 255, 255, 0.2);
+ }
+
+ .container {
+     max-width: 800px;
+     /* Adjust as needed */
+     margin: 0 auto;
+     padding: 1rem;
+ }
+
+ .profile-icon-container {
+     /* If you want it absolutely positioned in the header */
+     position: absolute;
+     top: 1rem;
+     right: 1rem;
+     cursor: pointer;
+ }
+
+ /* Style for the profile icon link */
+ .profile-icon-link {
+     display: flex;
+     /* Center the icon */
+     align-items: center;
+     justify-content: center;
+     width: 40px;
+     /* Size of the icon area */
+     height: 40px;
+     /* Size of the icon area */
+     border-radius: 50%;
+     /* Make it round */
+     background-color: rgba(255, 255, 255, 0.2);
+     /* Slightly transparent white background */
+     color: white;
+     /* Icon color */
+     text-decoration: none;
+     /* Remove underline */
+     transition: background-color 0.3s ease;
+     /* Smooth hover effect */
+ }
+
+ .profile-icon-link:hover {
+     background-color: rgba(255, 255, 255, 0.4);
+     /* More transparent white on hover */
+ }
+
+ /* Style for the icon itself (if using a font icon like Remixicon) */
+ .profile-icon-link i {
+     font-size: 1.5rem;
+     /* Size of the icon */
+ }
+
+ /* Basic styles for alerts/flash messages (if not using a framework like Tailwind) */
+ .alert {
+     padding: 0.75rem 1.25rem;
+     border: 1px solid transparent;
+     border-radius: 0.25rem;
+     margin-bottom: 1rem;
+ }
+
+ .alert-success {
+     color: #155724;
+     background-color: #d4edda;
+     border-color: #c3e6cb;
+ }
+
+ .alert-danger {
+     color: #721c24;
+     background-color: #f8d7da;
+     border-color: #f5c6cb;
+ }
+
+ .alert-info {
+     color: #0c5460;
+     background-color: #d1ecf1;
+     border-color: #bee5eb;
+ }
+
+ .alert-warning {
+     color: #856404;
+     background-color: #fff3cd;
+     border-color: #ffeeba;
  }
 
  .chat-container {
@@ -70,53 +174,53 @@
      /* Add space between messages */
  }
 
-.inline-suggestions {
-    /* Display below the message bubble but aligned with it */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    max-width: 85%;
-    /* Match message width */
-    margin-top: 8px;
-    /* Space between text bubble and buttons */
-    /* Align self based on parent (.message.bot/.user) */
-    align-self: inherit;
-    padding-left: 5px;
-    /* Slight indent */
-}
+ .inline-suggestions {
+     /* Display below the message bubble but aligned with it */
+     display: flex;
+     flex-wrap: wrap;
+     gap: 8px;
+     max-width: 85%;
+     /* Match message width */
+     margin-top: 8px;
+     /* Space between text bubble and buttons */
+     /* Align self based on parent (.message.bot/.user) */
+     align-self: inherit;
+     padding-left: 5px;
+     /* Slight indent */
+ }
 
-.inline-suggestion-button {
-    padding: 5px 12px;
-    /* Smaller padding */
-    border: 1px solid #cdd1d6;
-    /* Lighter border */
-    background-color: #ffffff;
-    /* White background */
-    color: #3b82f6;
-    /* Blue text */
-    border-radius: 14px;
-    /* Match rounding */
-    cursor: pointer;
-    font-size: 0.85em;
-    /* Smaller font */
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
-    white-space: nowrap;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
+ .inline-suggestion-button {
+     padding: 5px 12px;
+     /* Smaller padding */
+     border: 1px solid #cdd1d6;
+     /* Lighter border */
+     background-color: #ffffff;
+     /* White background */
+     color: #3b82f6;
+     /* Blue text */
+     border-radius: 14px;
+     /* Match rounding */
+     cursor: pointer;
+     font-size: 0.85em;
+     /* Smaller font */
+     transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+     white-space: nowrap;
+     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+ }
 
-.inline-suggestion-button:hover {
-    background-color: #f0f7ff;
-    /* Very light blue */
-    border-color: #a6cfff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
+ .inline-suggestion-button:hover {
+     background-color: #f0f7ff;
+     /* Very light blue */
+     border-color: #a6cfff;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+ }
 
-.inline-suggestion-button:active {
-    transform: scale(0.96);
-    /* Click animation */
-    background-color: #e1effe;
-    /* Slightly darker blue */
-}
+ .inline-suggestion-button:active {
+     transform: scale(0.96);
+     /* Click animation */
+     background-color: #e1effe;
+     /* Slightly darker blue */
+ }
 
  .message {
      padding: 12px 18px;
@@ -445,4 +549,44 @@
 
  .chat-box::-webkit-scrollbar-thumb:hover {
      background: #a8a8a8;
+ }
+
+ .p-icon {
+     font-size: 2rem;
+     padding: 10px;
+     border-radius: 50%;
+     background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
+     color: white;
+     transition: all .5s;
+     opacity: .9;box-shadow: 0 0 10px transparent;
+ }
+
+ .icon {
+     position: absolute;
+     top: 20px;
+     right: 10px;
+     cursor: pointer;
+     transition: all .5s;
+    opacity: 1;
+ }
+
+ .p-embed {
+     position: absolute;
+     top: 45px;
+     right: 45px;
+     opacity: 0;
+     overflow: hidden;
+     height: 0%;
+
+     /* transition: opacity 0.2s linear; */
+ }
+
+ .p-embed.active {
+     opacity: 1;
+ }
+
+ .p-icon:hover {
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.616);
+     /* More transparent white on hover */
+    opacity: 1;
  }

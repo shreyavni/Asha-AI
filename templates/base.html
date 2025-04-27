@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ASHA AI{% endblock %}</title>
+    {# Link to your main CSS file #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {# Add any other head elements like meta tags, favicons, etc. #}
+</head>
+
+<body class="font-sans antialiased"> {# Example body classes, adjust as needed #}
+
+    <header>
+        {# Your website's header and navigation goes here #}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {# Add conditional links for authentication #}
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+                {# Add other navigation links #}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {# This is the main content block that other templates will fill #}
+        {% block content %}
+        {# Default content if a template doesn't define this block #}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {# Your website's footer goes here #}
+        {# Removed the line causing the moment undefined error #}
+        <p>&copy; 2025 Your Website Name</p> {# You can hardcode the year or use a simple Jinja filter if needed #}
+    </footer>
+
+    {# Add links to your JavaScript files here #}
+    {# For example:
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> #}
+
+    {# Assuming you are using Tailwind CSS for the provided templates, include it here #}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</body>
+
+</html>

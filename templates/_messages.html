@@ -1,0 +1,13 @@
+{# This template is used to display Flask flash messages #}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class="list-none p-0 mb-4">
+    {% for category, message in messages %}
+    {# The category variable can be used for CSS classes (e.g., 'success', 'danger', 'info') #}
+    <li class="alert alert-{{ category }} px-4 py-3 rounded relative mb-2" role="alert">
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
