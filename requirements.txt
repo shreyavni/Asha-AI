@@ -1,6 +1,7 @@
 google-generativeai
 Flask
 Flask-Mail
+Flask-Migrate
 python-dotenv
 requests
 Flask-Login
