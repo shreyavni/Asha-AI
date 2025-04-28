@@ -6,27 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asha A.I.🚀 Bot</title>
     <style>
-        /* Add this CSS to your stylesheet */
 
         .p-cont {
             position: absolute;
             top: 10px;
             right: 20px;
-            /* Needed to position the dropdown relative to this container */
             display: inline-block;
-            /* Or flex/grid depending on your layout */
             cursor: pointer;
-            /* Indicate that it's interactive */
         }
 
         .icon .profile-img {
             width: 40px;
-            /* Adjust size as needed */
             height: 40px;
             border-radius: 50%;
-            /* Make it round */
             vertical-align: middle;
-            /* Align with surrounding text/elements */
         }
 
 
@@ -41,8 +34,6 @@
             z-index: 1000;
             margin-top: 10px;
             height: 0%;
-            /* opacity: 0; */
-            /* height: 0; */
             overflow: hidden;
         }
 
@@ -50,20 +41,15 @@
             height: 100%;
         }
 
-        /* **ANCHOR - atharv */
-
-        /* Style the dropdown header */
         .dropdown-header {
             display: flex;
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #eee;
-            /* Separator line */
         }
 
         .dropdown-header .profile-img-large {
             width: 50px;
-            /* Larger image in the header */
             height: 50px;
             border-radius: 50%;
             margin-right: 10px;
@@ -74,7 +60,6 @@
             color: #333;
         }
 
-        /* Style the dropdown menu list */
         .dropdown-menu-list {
             list-style: none;
             padding: 0;
@@ -83,25 +68,20 @@
 
         .dropdown-menu-list li a {
             display: flex;
-            /* Use flexbox for alignment */
             align-items: center;
             padding: 10px;
             text-decoration: none;
             color: #555;
             transition: background-color 0.2s ease;
-            /* Smooth hover effect */
         }
 
         .dropdown-menu-list li a:hover {
             background-color: #f0f0f0;
-            /* Highlight on hover */
         }
 
         .dropdown-menu-list li a i {
             margin-right: 10px;
-            /* Space between icon and text */
             font-size: 18px;
-            /* Adjust icon size */
         }
 
         .dropdown-menu-list li a .arrow-icon {
@@ -215,22 +195,15 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
 
-        // import gsap from 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'
-        // This JavaScript is for the old iframe structure and can be removed or updated
         const pbtn = document.querySelector('.icon');
         pbtn.addEventListener('click', () => {
             document.querySelector('.profile-dropdown').classList.toggle('active');
             const pd = document.querySelector('.profile-dropdown')
-            // var arr = [pd.children[0]];
-            // Array.from(pd.children[1].children).forEach(e => {
-            //     arr.push(e)
-            // });
-            // console.log(arr);
+
             if (pd.classList.contains('active')) {
                 var tl = gsap.timeline();
                 gsap.to('.profile-dropdown', {
                     opacity: 1,
-                    // y: 20,
                     height: 'auto',
 
                     duration: 0.3,
@@ -262,25 +235,9 @@
 
             }
         });
-
-        // You might want JavaScript here to toggle the dropdown on click instead of just hover
         const profileIconContainer = document.querySelector('.p-cont');
         const profileDropdown = document.querySelector('.profile-dropdown');
 
-        // if (profileIconContainer && profileDropdown) {
-        //     profileIconContainer.addEventListener('click', (event) => {
-        //         // Prevent the click from closing the dropdown immediately
-        //         event.stopPropagation();
-        //         profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
-        //     });
-
-        //     // Close the dropdown if clicked outside
-        //     document.addEventListener('click', (event) => {
-        //         if (!profileIconContainer.contains(event.target) && !profileDropdown.contains(event.target)) {
-        //             profileDropdown.style.display = 'none';
-        //         }
-        //     });
-        // }
 
 
         mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
