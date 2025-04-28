@@ -567,4 +567,4 @@ if __name__ == '__main__':
 
     print("Starting Flask development server...")
     # Use threaded=True if your chatbot logic might block, but be mindful of thread safety
-    app.run(debug=True, host='127.0.0.1', port=5000, threaded=True)
+    app.run(debug=True, host='127.0.0.1', port=10000, threaded=True)
