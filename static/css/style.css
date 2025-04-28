@@ -1,13 +1,13 @@
- /* static/css/style.css */
+
  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
- /* Add a modern font */
+
 
  body {
      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
      margin: 0;
      padding: 0;
      background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-     /* Gradient background */
+    
      height: 100vh;
 
      display: flex;
@@ -41,53 +41,37 @@
 
  .container {
      max-width: 800px;
-     /* Adjust as needed */
      margin: 0 auto;
      padding: 1rem;
  }
 
  .profile-icon-container {
-     /* If you want it absolutely positioned in the header */
      position: absolute;
      top: 1rem;
      right: 1rem;
      cursor: pointer;
  }
 
- /* Style for the profile icon link */
  .profile-icon-link {
      display: flex;
-     /* Center the icon */
      align-items: center;
      justify-content: center;
      width: 40px;
-     /* Size of the icon area */
      height: 40px;
-     /* Size of the icon area */
      border-radius: 50%;
-     /* Make it round */
      background-color: rgba(255, 255, 255, 0.2);
-     /* Slightly transparent white background */
      color: white;
-     /* Icon color */
-     text-decoration: none;
-     /* Remove underline */
      transition: background-color 0.3s ease;
-     /* Smooth hover effect */
  }
 
  .profile-icon-link:hover {
      background-color: rgba(255, 255, 255, 0.4);
-     /* More transparent white on hover */
  }
 
- /* Style for the icon itself (if using a font icon like Remixicon) */
  .profile-icon-link i {
      font-size: 1.5rem;
-     /* Size of the icon */
  }
 
- /* Basic styles for alerts/flash messages (if not using a framework like Tailwind) */
  .alert {
      padding: 0.75rem 1.25rem;
      border: 1px solid transparent;
@@ -122,17 +106,11 @@
  .chat-container {
      width: 95%;
      max-width: 800px;
-     /* Wider */
      background-color: rgba(255, 255, 255, 0.95);
-     /* Slightly transparent white */
      border-radius: 16px;
-     /* More rounded */
      box-shadow: 0 8px 32px rgb(0, 0, 0);
-     /* More pronounced shadow */
      backdrop-filter: blur(10px);
-     /* Frosted glass effect */
      -webkit-backdrop-filter: blur(10px);
-     /* Safari */
      border: 1px solid rgba(255, 255, 255, 0.18);
      display: flex;
      flex-direction: column;
@@ -147,10 +125,6 @@
      margin: 0;
      background: linear-gradient(120deg, #8ec5fc, #e0c3fc, #8ec5fc);
      animation: tex infinite 1s linear;
-     /* color: transparent; */
-     /* background-clip: text; */
-     /* -webkit-background-clip: text; */
-     /* Translucent header */
      border-bottom: 1px solid rgba(200, 200, 200, 0.5);
      font-size: 1.5em;
      font-weight: 600;
@@ -171,38 +145,26 @@
      display: flex;
      flex-direction: column;
      gap: 15px;
-     /* Add space between messages */
  }
 
  .inline-suggestions {
-     /* Display below the message bubble but aligned with it */
      display: flex;
      flex-wrap: wrap;
      gap: 8px;
      max-width: 85%;
-     /* Match message width */
      margin-top: 8px;
-     /* Space between text bubble and buttons */
-     /* Align self based on parent (.message.bot/.user) */
      align-self: inherit;
      padding-left: 5px;
-     /* Slight indent */
  }
 
  .inline-suggestion-button {
      padding: 5px 12px;
-     /* Smaller padding */
      border: 1px solid #cdd1d6;
-     /* Lighter border */
      background-color: #ffffff;
-     /* White background */
      color: #3b82f6;
-     /* Blue text */
      border-radius: 14px;
-     /* Match rounding */
      cursor: pointer;
      font-size: 0.85em;
-     /* Smaller font */
      transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
      white-space: nowrap;
      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -210,16 +172,13 @@
 
  .inline-suggestion-button:hover {
      background-color: #f0f7ff;
-     /* Very light blue */
      border-color: #a6cfff;
      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
  }
 
  .inline-suggestion-button:active {
      transform: scale(0.96);
-     /* Click animation */
      background-color: #e1effe;
-     /* Slightly darker blue */
  }
 
  .message {
@@ -227,11 +186,9 @@
      border-radius: 22px;
      line-height: 1.6;
      max-width: 75%;
-     /* Adjust max width */
      word-wrap: break-word;
      position: relative;
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.716);
-     /* Ensure text selection background is visible */
      -webkit-user-select: text;
      -moz-user-select: text;
      -ms-user-select: text;
@@ -240,7 +197,6 @@
 
  .message.user {
      background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
-     /* Gradient user bubble */
      color: white;
      align-self: flex-end;
      border-bottom-right-radius: 6px;
@@ -248,7 +204,6 @@
 
  .message.bot {
      background-color: #f0f0f5;
-     /* Lighter grey for bot */
      color: #2c2c2e;
      align-self: flex-start;
      border-bottom-left-radius: 6px;
@@ -256,11 +211,9 @@
 
  .message.bot a {
      color: #0066cc;
-     /* Slightly different link color */
      text-decoration: none;
      font-weight: 500;
      border-bottom: 1px dotted #0066cc;
-     /* Subtle underline */
      transition: color 0.2s ease;
  }
 
@@ -293,7 +246,6 @@
      min-width: 300px;
      border-radius: 5px;
      overflow: hidden;
-     /* Ensures border radius applies to table */
      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
  }
 
@@ -301,12 +253,10 @@
  .message.bot td {
      padding: 10px 12px;
      border: 1px solid #e1e1e6;
-     /* Lighter border */
  }
 
  .message.bot th {
      background-color: #e9ecef;
-     /* Header background */
      color: #333;
      text-align: left;
      font-weight: 600;
@@ -364,7 +314,6 @@
      opacity: 1;
  }
 
- /* Pulse animation */
  @keyframes pulse {
      0% {
          box-shadow: 0 0 0 #69b5f3;
@@ -384,12 +333,10 @@
 
  .message.bot tr:nth-of-type(even) {
      background-color: #f9f9f9;
-     /* Zebra striping */
  }
 
  .message.bot tr:last-of-type {
      border-bottom: 2px solid #007aff;
-     /* Accent last row */
  }
 
  .message p {
@@ -401,34 +348,23 @@
      margin-bottom: 0;
  }
 
- /* Typing Indicator Styles */
  .typing-indicator {
      padding: 12px 18px !important;
-     /* Match message padding */
      display: flex;
-     /* Use flex to align dots */
      align-items: center;
-     /* background-color: #e5e5ea;
-    color: #1d1d1f; */
      align-self: flex-start;
-     /* border-bottom-left-radius: 6px; */
      margin-bottom: 15px;
-     /* Match message margin */
      height: fit-content;
-     /* Ensure it wraps the dots */
      min-height: 20px;
-     /* Minimum height */
  }
 
  .typing-indicator span {
      height: 8px;
      width: 8px;
      background-color: #adb5bd;
-     /* Grey dots */
      border-radius: 50%;
      display: inline-block;
      margin: 0 2px;
-     /* Space between dots */
      animation: bounce 1.4s infinite ease-in-out both;
  }
 
@@ -457,7 +393,6 @@
      }
  }
 
- /* --- Chat Input Area --- */
  .chat-input {
      display: flex;
      padding: 12px 15px;
@@ -490,7 +425,6 @@
  #send-button,
  #clear-button {
      padding: 0 18px;
-     /* Adjust padding */
      background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
      color: white;
      border: none;
@@ -501,7 +435,6 @@
      transition: background-color 0.2s ease, transform 0.1s ease;
      margin-left: 5px;
      height: 42px;
-     /* Match input height */
      display: flex;
      align-items: center;
      justify-content: center;
@@ -522,17 +455,13 @@
  #send-button:active,
  #clear-button:active {
      transform: scale(0.97);
-     /* Click effect */
  }
 
  #send-button:disabled {
      background: #b0c4de;
-     /* Light steel blue when disabled */
      cursor: not-allowed;
      opacity: 0.7;
  }
-
- /* Scrollbar styling */
  .chat-box::-webkit-scrollbar {
      width: 8px;
  }
@@ -577,8 +506,6 @@
      opacity: 0;
      overflow: hidden;
      height: 0%;
-
-     /* transition: opacity 0.2s linear; */
  }
 
  .p-embed.active {
@@ -587,6 +514,5 @@
 
  .p-icon:hover {
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.616);
-     /* More transparent white on hover */
     opacity: 1;
  }
