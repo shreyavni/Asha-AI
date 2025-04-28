@@ -10,7 +10,7 @@ if not GEMINI_API_KEY: raise ValueError("Missing Gemini API Key")
 if not FLASK_SECRET_KEY: raise ValueError("Missing Flask Secret Key")
   
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                          'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'app.db')
+                          'sqlite:///app.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 GEMINI_GENERATION_CONFIG = {
