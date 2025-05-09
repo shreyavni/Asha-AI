@@ -1,5 +1,4 @@
 # Asha Ai🚀 - by Avni Shukla
-an ai developed by--
 
 ## How to run
 
