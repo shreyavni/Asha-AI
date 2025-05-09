@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Asha AI 🚀 - Your AI Companion</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #4A4A4A;
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding-top: 90px;
+            background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #f0abf3, #8ed6ea);
+            background-size: 400% 400%;
+            animation: gradientBG 25s ease infinite;
+            margin: 0;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #5e35b1 0%, #1e88e5 100%);
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease, padding 0.3s ease;
+        }
+
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .navbar .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.7);
+        }
+
+        .navbar .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fdd835;
+            transition: width 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #fff;
+        }
+
+        .navbar .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hhdGJvdCUyMHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+            color: #fff;
+            position: relative;
+            padding: 100px 2rem 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(46, 25, 113, 0.75), rgba(123, 31, 162, 0.75));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 3rem auto;
+            background-color: rgba(255, 255, 255, 0.97);
+
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-top: 5px solid;
+
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        #about {
+            border-top-color: white;
+
+        }
+
+        #features {
+            border-top-color: #00aeff;
+
+        }
+
+        #ethics {
+            border-top-color: #4caf50;
+
+        }
+
+        #technical-foundation {
+            border-top-color: #ff7f50;
+
+        }
+
+
+        .section h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+
+        #about h2::after {
+            background-color: white;
+        }
+
+        #features h2::after {
+            background-color: #00aeff;
+        }
+
+        #ethics h2::after {
+            background-color: #4caf50;
+        }
+
+        #technical-foundation h2::after {
+            background-color: #ff7f50;
+        }
+
+        .section h2::after {
+
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section p,
+        .section ul {
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .section strong {
+            font-weight: 600;
+
+            color: #c33764;
+        }
+
+        #about strong {
+            color: #b08d00;
+        }
+
+
+        #ethics strong {
+            color: #2e7d32;
+        }
+
+
+
+
+        #ethics ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #ethics ul li {
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+
+        #ethics ul li::before {
+
+            content: '\eb7b';
+
+            font-family: 'Boxicons';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #4caf50;
+            font-size: 1.4rem;
+        }
+
+
+
+        .features-grid,
+        .foundation-grid {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+
+        .feature-item,
+        .foundation-item {
+
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+
+        }
+
+
+        #features .feature-item {
+            background-color: #e6f7ff;
+
+            border-left: 5px solid #00aeff;
+
+        }
+
+        #features .feature-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 174, 255, 0.2);
+            border-color: #00aeff;
+        }
+
+        #features .feature-item h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0056b3;
+
+            margin-bottom: 1rem;
+        }
+
+        #features .feature-item i {
+            font-size: 2.8rem;
+            display: block;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            background-image: linear-gradient(45deg, #00c6ff, #0072ff);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        #features .feature-item:hover i {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+
+        #technical-foundation .foundation-item {
+
+            background-color: #fff0e6;
+
+            border-left: 5px solid #ff7f50;
+
+        }
+
+        #technical-foundation .foundation-item:hover {
+
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(255, 127, 80, 0.25);
+            border-color: #ff7f50;
+        }
+
+        #technical-foundation .foundation-item h3 {
+
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #cc5500;
+
+            margin-bottom: 1rem;
+        }
+
+        #technical-foundation .foundation-item i {
+
+            font-size: 2.8rem;
+            display: block;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            background-image: linear-gradient(45deg, #ff9a8b, #ff6a88);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        #technical-foundation .foundation-item:hover i {
+
+            transform: scale(1.1) rotateY(360deg);
+        }
+
+
+
+        .footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background-color: #37474f;
+            color: #eceff1;
+            margin-top: 4rem;
+            border-top: 5px solid #5e35b1;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section h2 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+                align-items: flex-start;
+            }
+
+            .navbar .logo {
+                margin-bottom: 0.5rem;
+                font-size: 1.8rem;
+            }
+
+            .navbar .nav-links {
+                margin-top: 0.8rem;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .navbar .nav-links a {
+                margin-left: 0;
+                margin-right: 0.5rem;
+                font-size: 0.9rem;
+                padding-bottom: 0.3rem;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding-top: 80px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+                margin: 2rem auto;
+            }
+
+            .section h2 {
+                font-size: 2.2rem;
+            }
+
+            .features-grid,
+            .foundation-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-item h3,
+            .foundation-item h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar .nav-links a {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">Asha AI🚀</a>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#features">My Features</a>
+            <a href="#ethics">My Ethics</a>
+            <a href="#technical-foundation">How I Work</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Meet Asha AI</h1>
+            <p>I'm your dedicated AI assistant, here to empower your journey. Discover my capabilities and how I'm
+                designed to help you succeed.</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <h2>About Me, Asha AI</h2>
+            <p>
+                I am <strong>Asha AI</strong>, a specialized AI Chatbot developed to enhance your experience and
+                engagement by providing seamless access to information and resources.
+            </p>
+            <p>
+                As an <strong>AI-powered virtual assistant</strong>, my purpose is to guide you in exploring careers,
+                job listings, community events, mentorship programs, and session details with efficiency and ease.
+            </p>
+            <p>
+                To ensure I am <strong>inclusive and accessible</strong> for everyone, I incorporate
+                <strong>context-aware capabilities</strong>. This allows me to deliver meaningful and <strong>relevant
+                    interactions</strong> tailored to your needs.
+            </p>
+            <p>
+                I am built on strong <strong>ethical AI principles</strong>. This means I prioritize <strong>gender bias
+                    mitigation, responsible AI-driven responses, and privacy-conscious design</strong>, all to ensure
+                you have a <strong>secure and informative experience</strong>.
+            </p>
+            <p>
+                By leveraging advanced technologies like <strong>retrieval-augmented generation (RAG), semantic search,
+                    and dynamic knowledge retrieval</strong>, I provide <strong>accurate, real-time responses</strong>.
+                My goal is to align with <strong>women career engagement and empowerment initiatives</strong>, making me
+                a valuable resource for your professional growth and networking.
+            </p>
+        </section>
+
+        <section id="features" class="section">
+            <h2>My Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class='bx bx-conversation'></i>
+                    <h3>Contextual Awareness</h3>
+                    <p>I can handle multi-turn conversations, ensuring logical, coherent, and relevant responses using
+                        non-personalized session data to understand your flow.</p>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-plug'></i>
+                    <h3>Seamless Integration</h3>
+                    <p>I integrate with public APIs and structured datasets (JSON, CSV) for real-time information on job
+                        listings, events, and mentorship opportunities.</p>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-shield-alt-2'></i>
+                    <h3>Ethical AI & Bias Prevention</h3>
+                    <p>My programming includes NLP-based bias detection to identify and redirect gender-biased queries,
+                        promoting fairness.</p>
+                    <p>I'm committed to inclusivity by ensuring my responses provide factual, positive insights on women
+                        empowerment.</p>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-lock-alt'></i>
+                    <h3>Security & Privacy</h3>
+                    <p>I employ robust encryption and adhere to global AI ethics frameworks for responsible and
+                        privacy-conscious interactions, safeguarding your information.</p>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-refresh'></i>
+                    <h3>Real-Time Updates</h3>
+                    <p>My dynamic content retrieval mechanisms fetch and update information from verified sources in
+                        real-time, so you always have the latest details.</p>
+                    <p>I aggregate insights from verified sources, including women career engagement initiatives, job
+                        databases, and event platforms.</p>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-line-chart'></i>
+                    <h3>Performance Monitoring</h3>
+                    <p>My performance is tracked through analytics to measure user engagement, response accuracy, and
+                        the effectiveness of bias mitigation.</p>
+                    <p>I operate on a continuous learning framework, refining my AI-driven responses based on real-world
+                        interactions to serve you better.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ethics" class="section">
+            <h2>My Ethical Commitments</h2>
+            <ul>
+                <li><strong>Gender Bias Mitigation:</strong> I actively identify and am designed to redirect
+                    gender-biased queries, promoting fairness and equality.</li>
+                <li><strong>Responsible AI-Driven Responses:</strong> My responses are geared to be factual, positive,
+                    and aligned with empowerment initiatives.</li>
+                <li><strong>Privacy-Conscious Design:</strong> I employ robust encryption and adhere to global privacy
+                    frameworks to protect user data and ensure confidentiality.</li>
+                <li><strong>Transparency:</strong> I aim to be clear about my capabilities and limitations, fostering
+                    trust in our interactions.</li>
+                <li><strong>Accountability:</strong> My design includes mechanisms for feedback and oversight to
+                    continuously improve my ethical performance and reliability.</li>
+            </ul>
+        </section>
+
+        <section id="technical-foundation" class="section">
+            <h2>How I Work: My Technical Foundation</h2>
+            <div class="foundation-grid">
+                <div class="foundation-item"> <i class='bx bx-chat'></i>
+                    <h3>Contextual Awareness Engine</h3>
+                    <p>My system handles multi-turn conversations, ensuring logical, coherent, and relevant responses
+                        based on our ongoing interaction.</p>
+                    <p>I utilize non-personalized session data to maintain a smooth and natural conversational flow.</p>
+                </div>
+                <div class="foundation-item">
+                    <i class='bx bx-server'></i>
+                    <h3>Dynamic System Integration</h3>
+                    <p>I seamlessly integrate with public APIs to fetch real-time job listings, event details, and
+                        mentorship opportunities for you.</p>
+                    <p>My knowledge base leverages structured datasets (e.g., session_details.json,
+                        job_listing_data.csv) for accurate, up-to-date information.</p>
+                </div>
+                <div class="foundation-item">
+                    <i class='bx bx-check-shield'></i>
+                    <h3>Proactive Ethical AI & Bias Prevention</h3>
+                    <p>My core includes NLP-based bias detection to identify and thoughtfully handle gender-biased
+                        queries, ensuring respectful interactions.</p>
+                    <p>I am programmed to promote inclusivity by ensuring my responses provide factual, positive
+                        insights focused on women empowerment.</p>
+                </div>
+                <div class="foundation-item">
+                    <i class='bx bx-lock'></i>
+                    <h3>Security & Privacy Compliance</h3>
+                    <p>Robust encryption protocols are employed to safeguard all data and ensure the security of our
+                        interactions.</p>
+                    <p>My operations adhere to global AI ethics frameworks, ensuring responsible and privacy-conscious
+                        interactions at all times.</p>
+                </div>
+                <div class="foundation-item">
+                    <i class='bx bx-sync'></i>
+                    <h3>Real-Time Knowledge Base Updates</h3>
+                    <p>I use dynamic content retrieval mechanisms to fetch and update my information base in real-time
+                        from verified sources.</p>
+                    <p>My system aggregates insights from various verified platforms, including career engagement
+                        initiatives, job databases, and event portals.</p>
+                </div>
+                <div class="foundation-item">
+                    <i class='bx bx-bar-chart-alt'></i>
+                    <h3>Continuous Performance & Monitoring</h3>
+                    <p>Advanced analytics tracking is enabled to measure user engagement, my response accuracy, and the
+                        effectiveness of bias mitigation efforts.</p>
+                    <p>I benefit from a continuous learning framework that refines my AI-driven responses based on
+                        analysis of real-world interactions.</p>
+                </div>
+                <div class="foundation-item">
+                    <i class='bx bx-error-alt'></i>
+                    <h3>Intelligent Error Handling & Fallback</h3>
+                    <p>My design ensures graceful degradation. If I can't assist, I provide alternative suggestions or
+                        guide users to human support when necessary.</p>
+                    <p>I incorporate a feedback loop, allowing users to report if any of my responses seem inaccurate,
+                        biased, or irrelevant, helping me learn.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Asha AI Initiative. All rights reserved. Your partner in empowerment.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => { observer.observe(section); });
+        });
+    </script>
+
+</body>
+
+</html>
