@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to Asha AI🚀</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
 
         * {
             margin: 0;
             padding: 0;
-            font-family: "poppins";
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
         }
 
         body {
@@ -22,142 +26,279 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* background: linear-gradient(45deg, #098dc1, 60%, #f417de); */
             background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            flex-direction: column;
+            padding-top: 80px;
+            overflow-x: hidden;
         }
 
+        
+        .header {
+            position: fixed;
+            
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #098dc1;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            padding: 15px 0;
+            
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            
+            z-index: 100;
+            
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+            
+            transition: text-shadow 0.3s ease;
+        }
+
+        .header a:hover {
+            text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
+            
+        }
+
+        
         .container {
-            height: 650px;
-            width: 410px;
-            background: #eee;
-            border-radius: 15px;
+            height: 600px;
+            width: 420px;
+            
+            background: #fff;
+            border-radius: 20px;
+            
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            
+            padding: 40px;
+            
         }
 
+        
         .Form {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-
+            width: 100%;
+            
+            padding: 0 20px;
+            
         }
 
-        input {
-            accent-color: #A93DD5 !important;
+        
+        input[type="checkbox"] {
+            accent-color: #098dc1 !important;
+            cursor: pointer;
         }
 
-        .login-form {
+        
+        .login-form,
+        .Register-form {
             position: absolute;
-            transform: translateX(0px);
-            transition: .5s ease;
-
+            width: calc(100% - 80px);
+            
+            transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+            
         }
 
         .login-form.active {
-            transform: translateX(-410px);
+            transform: translateX(-150%);
+            
+            opacity: 0;
+            pointer-events: none;
+            
         }
 
         .Register-form {
-            transform: translateX(410px);
-            transition: .5s ease;
-
+            transform: translateX(150%);
+            
+            opacity: 0;
+            pointer-events: none;
+            
         }
 
         .Register-form.active {
             transform: translateX(0);
+            
+            opacity: 1;
+            pointer-events: all;
+            
         }
 
+        
         h2 {
             color: #333;
-            font-size: 32px;
+            font-size: 36px;
+            
+            margin-bottom: 30px;
+            
+            text-align: center;
+            width: 100%;
         }
 
+        
         .input-box {
-            margin: 45px 0;
-            height: 40px;
-            width: 300px;
-            border-bottom: 2px solid rgba(0, 0, 0, .5);
+            margin: 20px 0;
+            
+            height: 55px;
+            
+            width: 100%;
+            border-bottom: 2px solid rgba(0, 0, 0, .3);
+            
             position: relative;
+            display: flex;
+            align-items: center;
+            
+            transition: border-bottom-color 0.3s ease;
+            
+        }
+
+        .input-box:focus-within {
+            border-bottom-color: #098dc1;
+            
         }
 
         .input-box input {
-            width: 90%;
+            flex-grow: 1;
+            
             height: 100%;
-            float: right;
             border: none;
             outline: none;
-            font-size: 15px;
+            font-size: 17px;
+            
             color: rgba(0, 0, 0, .9);
-
-            padding: 5px 0;
+            padding: 0 5px;
+            
             background: transparent;
+            margin-left: 10px;
+            
         }
+
+        
+        .input-box input::placeholder {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        
+        .input-box input:focus::placeholder {
+            opacity: 1;
+        }
+
 
         .input-box label {
             position: absolute;
-            left: 0;
-            transform: translateY(-56%);
-            font-size: 15px;
+            left: 30px;
+            
+            top: 50%;
+            
+            transform: translateY(-50%);
+            font-size: 16px;
+            
             font-weight: 500;
-            color: #333;
+            color: #555;
+            
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -8px;
+            
+            font-size: 13px;
+            
+            color: #098dc1;
+            left: 0;
+            
         }
 
         .input-box i {
-            position: absolute;
-            left: 0px;
-            transform: translateY(75%);
-            font-size: 22px;
+            font-size: 24px;
+            
             color: rgba(0, 0, 0, .5);
-            bottom: 23px;
+            transition: color 0.3s ease;
+            
         }
 
-        input::placeholder {
-            font-size: 13px;
+        .input-box:focus-within i {
+            color: #098dc1;
+            
         }
 
-        input#checked {
-            margin-right: 3px;
-        }
 
+        
         .forgot-section {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin-top: -20px;
+            margin-top: -10px;
+            
+            font-size: 14px;
+            color: #555;
         }
 
         .forgot-section span {
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 13px;
         }
 
         .forgot-section span a {
-            color: #333;
+            color: #555;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
+        .forgot-section span a:hover {
+            color: #098dc1;
+
+        }
+
+        
         .btn {
             width: 100%;
-            height: 40px;
-            margin-top: 20px;
+            height: 50px;
+            
+            margin-top: 25px;
+            
             border-radius: 50px;
             border: none;
             outline: none;
             background: linear-gradient(45deg, #098dc1, 60%, #f417de);
-            font-size: 19px;
+            font-size: 20px;
+            
             font-weight: 500;
             color: #eee;
             position: relative;
             cursor: pointer;
             z-index: 1;
             overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            
+            transition: box-shadow 0.3s ease, transform 0.1s ease;
+            
+        }
+
+        .btn:hover {
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+            
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn::before {
@@ -166,369 +307,493 @@
             left: 0;
             top: 0%;
             height: 100%;
-            width: 00%;
+            width: 0%;
             background: linear-gradient(45deg, #f417de, 60%, #098dc1);
-            transition: .5s ease;
+            transition: width 0.5s ease;
             z-index: -1;
-        }
-
-        .btn:hover {
-            color: #eee;
         }
 
         .btn:hover:before {
             width: 100%;
         }
 
+        
         p {
-            color: rgba(0, 0, 0, .5);
-            font-size: 13px;
+            color: rgba(0, 0, 0, .7);
+            font-size: 15px;
             font-weight: 500;
-            margin: 25px 0;
+            margin: 20px 0;
+            
         }
 
+        
         .social-media {
             display: flex;
             text-decoration: none;
             color: #098dc1;
             background-color: white;
-            padding: 4px 10px;
-            border-radius: 16px;
+            padding: 8px 10px;
+            border-radius: 50px;
             box-shadow: 0px 0px 5px #098dc1;
             transition: all .5s ease;
+            align-items: center;
+            
+            margin-bottom: 15px;
+            
         }
 
         .social-media:hover {
-
             box-shadow: 0px 0px 10px #098dc1;
             background-color: #098dc1;
             color: white;
-
         }
 
-        a {
-            text-decoration: none;
-        }
-
-        .social-media i {
-            font-size: 28px;
-            margin-left: 15px;
+        .social-media img {
+            
+            background-color: #fff;
             padding: 5px;
-            cursor: pointer;
-            transition: .3s;
-        }
-
-        .social-media i:nth-child(1) {
-            color: #eee;
-            background: #1822dd;
             border-radius: 50%;
-            border: 2px solid #eee;
+            margin-right: 8px;
+            
         }
 
-        .social-media i:nth-child(1):hover {
-            background: #eee;
-            color: #1822dd;
-            border: 2px solid #1822dd;
+        .social-media span {
+            
+            font-size: 15px;
+            font-weight: 500;
         }
 
-        .social-media i:nth-child(2) {
-            color: #eee;
-            background: #f00;
-            border-radius: 50%;
-            border: 2px solid #eee;
-        }
 
-        .social-media i:nth-child(2):hover {
-            background: #eee;
-            color: #f00;
-            border: 2px solid #f00;
-        }
-
-        .social-media i:nth-child(3) {
-            color: #eee;
-            background: #098dc1;
-            border-radius: 50%;
-            border: 2px solid #eee;
-        }
-
-        .social-media i:nth-child(3):hover {
-            background: #eee;
-            color: #098dc1;
-            border: 2px solid #098dc1;
-        }
-
-        .RegisteBtn a {
+        
+        .RegisteBtn a,
+        .LoginBtn a {
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
+            color: #098dc1;
+            font-weight: 600;
+            
+            transition: all 0.3s ease;
+        }
+
+        .RegisteBtn a:hover,
+        .LoginBtn a:hover {
+            font-size: 17px;
+        }
+
+        .RegisteBtn,
+        .LoginBtn {
+            margin-top: 15px;
+            
+            cursor: pointer;
         }
 
 
+        
         @media(max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .header {
+                font-size: 32px;
+                padding: 12px 0;
+            }
+
+            .container {
+                height: 550px;
+                width: 380px;
+                padding: 30px;
+            }
+
+            .Form {
+                padding: 0 15px;
+            }
+
+            h2 {
+                font-size: 30px;
+                margin-bottom: 25px;
+            }
+
+            .input-box {
+                margin: 18px 0;
+                
+                height: 50px;
+            }
+
+            .input-box input {
+                font-size: 16px;
+            }
+
+            .input-box label {
+                font-size: 15px;
+            }
+
+            .input-box input:focus+label,
+            .input-box input:valid+label {
+                top: -6px;
+                font-size: 12px;
+            }
+
+            .input-box i {
+                font-size: 22px;
+            }
+
+            .forgot-section {
+                font-size: 13px;
+                margin-top: -8px;
+                
+            }
+
+            .btn {
+                height: 45px;
+                font-size: 18px;
+                margin-top: 20px;
+                
+            }
+
+            p {
+                font-size: 14px;
+                margin: 15px 0;
+                
+            }
+
+            .social-media {
+                padding: 8px 20px;
+                margin-bottom: 10px;
+                
+            }
+
+            .social-media img {
+                width: 18px;
+                height: 18px;
+                margin-right: 10px;
+            }
+
+            .social-media span {
+                font-size: 14px;
+            }
+
+            .RegisteBtn a,
+            .LoginBtn a {
+                font-size: 14px;
+            }
+
+            .RegisteBtn,
+            .LoginBtn {
+                margin-top: 12px;
+                
+            }
+        }
+
+        @media(max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .header {
+                font-size: 28px;
+                padding: 10px 0;
+            }
+
             .container {
                 height: 500px;
-                width: 380px;
+                width: 320px;
+                padding: 25px;
+            }
+
+            .Form {
+                padding: 0 10px;
             }
 
             h2 {
                 font-size: 26px;
+                margin-bottom: 20px;
             }
 
             .input-box {
-                margin: 34px 0;
-                height: 35px;
-                width: 300px;
-            }
-
-            .input-box label {
-                font-size: 13px;
-
+                margin: 12px 0;
+                
+                height: 45px;
             }
 
             .input-box input {
-                font-size: 13px;
-            }
-
-            .input-box i {
-
-                font-size: 18px;
-
-            }
-
-            input::placeholder {
-                font-size: 13px;
-            }
-
-            .forgot-section span {
-                font-size: 12px;
-            }
-
-            input#checked {
-                margin-right: 2px;
-                height: 15px;
-            }
-
-            .btn {
-                height: 35px;
                 font-size: 15px;
             }
 
-            p {
+            .input-box label {
+                font-size: 14px;
+            }
+
+            .input-box input:focus+label,
+            .input-box input:valid+label {
+                top: -5px;
                 font-size: 11px;
             }
 
-            .social-media i {
+            .input-box i {
                 font-size: 20px;
-
             }
 
-            .RegisteBtn a {
-                text-decoration: none;
+            .forgot-section {
+                font-size: 12px;
+                margin-top: -6px;
+                
+            }
+
+            .btn {
+                height: 40px;
+                font-size: 16px;
+                margin-top: 18px;
+                
+            }
+
+            p {
+                font-size: 13px;
+                margin: 12px 0;
+                
+            }
+
+            .social-media {
+                padding: 6px 15px;
+                margin-bottom: 8px;
+                
+            }
+
+            .social-media img {
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+            }
+
+            .social-media span {
                 font-size: 13px;
             }
 
+            .RegisteBtn a,
+            .LoginBtn a {
+                font-size: 13px;
+            }
+
+            .RegisteBtn,
+            .LoginBtn {
+                margin-top: 10px;
+                
+            }
         }
 
-        @media(max-width: 480px) {
+        @media(max-width:365px) {
+            body {
+                padding-top: 50px;
+            }
+
+            .header {
+                font-size: 24px;
+                padding: 8px 0;
+            }
+
             .container {
-                height: 450px;
-                width: 310px;
+                height: 480px;
+                width: 280px;
+                padding: 20px;
+            }
+
+            .Form {
+                padding: 0 5px;
             }
 
             h2 {
                 font-size: 22px;
+                margin-bottom: 15px;
             }
 
             .input-box {
-                margin: 20px 0;
-                height: 35px;
-                width: 220px;
-            }
-
-            .input-box label {
-                font-size: 12px;
-
+                margin: 8px 0;
+                
+                height: 40px;
             }
 
             .input-box input {
-                font-size: 12px;
+                font-size: 14px;
             }
 
-            .input-box i {
-
-                font-size: 16px;
-
+            .input-box label {
+                font-size: 13px;
             }
 
-            input::placeholder {
+            .input-box input:focus+label,
+            .input-box input:valid+label {
+                top: -4px;
                 font-size: 10px;
             }
 
-            .forgot-section span {
-                font-size: 9px;
+            .input-box i {
+                font-size: 18px;
             }
 
-            input#checked {
-                margin-right: 2px;
-                height: 10px;
+            .forgot-section {
+                font-size: 11px;
+                margin-top: -4px;
+                
             }
 
             .btn {
-                height: 25px;
-                font-size: 12px;
+                height: 35px;
+                font-size: 14px;
+                margin-top: 12px;
+                
             }
 
             p {
-                font-size: 11px;
+                font-size: 12px;
+                margin: 8px 0;
+                
             }
 
-            .social-media i {
-                font-size: 18px;
+            .social-media {
+                padding: 5px 10px;
+                margin-bottom: 6px;
 
+                
             }
 
-            .RegisteBtn a {
-                text-decoration: none;
-                font-size: 11px;
+            .social-media img {
+                width: 14px;
+                height: 14px;
+                margin-right: 6px;
             }
 
+            .social-media span {
+                font-size: 12px;
+            }
+
+            .RegisteBtn a,
+            .LoginBtn a {
+                font-size: 12px;
+            }
+
+            .RegisteBtn,
+            .LoginBtn {
+                margin-top: 8px;
+                
+            }
         }
 
-        @media(max-width:365px) {
-            .container {
-                height: 420px;
-                width: 280px;
-            }
 
-            h2 {
-                font-size: 18px;
-            }
-
-            .input-box {
-                margin: 20px 0;
-                height: 35px;
-                width: 200px;
-            }
-
-            .social-media i {
-                font-size: 16px;
-
-            }
-
-            .RegisteBtn a {
-                text-decoration: none;
-                font-size: 9px;
-            }
-
+        
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 110;
+            padding: 12px 25px;
+            
+            border-radius: 8px;
+            
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 0;
+            
+            transform: translateX(100%);
+            
+            min-width: 250px;
+            
         }
-    </style>
-    <style>
-        /* .alert {
-            padding: 0.75rem 1.25rem;
-            border: 1px solid transparent;
-            border-radius: 0.25rem;
-            margin-bottom: 1rem;
-        } */
 
         .alert-success {
-            color: #155724;
-            background-color: #d4edda;
-            border-color: #c3e6cb;
+            color: #0c6346;
+            
+            background-color: #d1e7dd;
+            border: 1px solid #badbcc;
         }
 
         .alert-danger {
-            color: #721c24;
+            color: #842029;
             background-color: #f8d7da;
-            border-color: #f5c6cb;
+            border: 1px solid #f5c2c7;
         }
 
-        .alert {
-            position: absolute;
-            top: 40px;
-            right: 20px;
-            z-index: 10;
-        }
-        body{
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .header{
-            /* position: absolute;
-            top:0px;
-            left: 0px; */
-            background-color: #098dc1;
-            width: 100vw;
-            text-align: center;
-            font-size: 40px;
-            color: #fff;
-            margin-top: 0;
-        }
-        .header a{
-            color:#fff;
-            text-shadow: 0px 0px 10px  black;
-        }
-        input[type="checkbox"]{
+        .alert .btn-close {
+            margin-left: 20px;
+            
+            font-size: 14px;
+            
             cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .alert .btn-close:hover {
+            opacity: 1;
         }
     </style>
 </head>
 
 <body>
     {# Include the partial for flash messages if you create one #}
+    {# The flash messages will be positioned fixed at the top-right by the CSS #}
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    {% for category, message in messages %}
+    {# Only process the last message to avoid multiple alerts stacking up #}
+    {% set last_message = messages[-1] %}
+    {% set category, message = last_message %}
     <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
         {{ message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    {% endfor %}
     {% endif %}
     {% endwith %}
+
     <div class="header">
         <a href="/">
-        Asha AI🚀</a>
+            Asha AI 🚀
+        </a>
     </div>
+
     <div class="container">
         <div class="Form login-form">
             <h2>Login</h2>
             <form method="POST" action="{{ url_for('login') }}" class="max-w-sm mx-auto">
                 <div class="input-box">
                     <i class='bx bxs-user'></i>
-                    <label for="#">Username</label>
                     <input type="text" placeholder="Enter Your Username*" name="username" required>
-
-
+                    <label for="#">Username</label>
                 </div>
                 <div class="input-box">
-                    <i class='bx bxs-envelope'></i>
+                    <i class='bx bxs-lock'></i>
                     <input type="password" placeholder="Enter Your Password*" name="password" required>
                     <label for="#">Password</label>
-
                 </div>
                 <div class="forgot-section">
-                    <span><input type="checkbox" name="remember" id="checked"><label for="checked">Remember Me</label></span>
+                    <span><input type="checkbox" name="remember" class="checked"><label for="checked">&nbsp;Remember
+                            Me</label></span>
                 </div>
-                <button class="btn">Login</button>
+                <button type="submit" class="btn">Login</button>
             </form>
             <p>Or</p>
-            <a href="/google/login">
+            <a href="/google/login" style="text-decoration: none;">
                 <div class="social-media" style="display: flex;align-items: center;"><img
                         src="data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M17.4612 7.21757H16.751V7.18098H8.81632V10.7075H13.7989C13.072 12.7604 11.1187 14.234 8.81632 14.234C5.89503 14.234 3.52653 11.8655 3.52653 8.94425C3.52653 6.02296 5.89503 3.65446 8.81632 3.65446C10.1648 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1385 0.12793 8.81632 0.12793C3.94751 0.12793 0 4.07544 0 8.94425C0 13.8131 3.94751 17.7606 8.81632 17.7606C13.6851 17.7606 17.6326 13.8131 17.6326 8.94425C17.6326 8.35311 17.5718 7.77609 17.4612 7.21757Z' fill='%23FFC107' /%3E%3Cpath d='M1.0166 4.84069L3.9132 6.96498C4.69697 5.02451 6.59513 3.65446 8.8164 3.65446C10.1649 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1386 0.12793 8.8164 0.12793C5.43005 0.12793 2.49333 2.03975 1.0166 4.84069Z' fill='%23FF3D00' /%3E%3Cpath d='M8.8165 17.7612C11.0938 17.7612 13.1629 16.8897 14.7274 15.4725L11.9988 13.1635C11.0839 13.8593 9.96591 14.2356 8.8165 14.2347C6.52338 14.2347 4.57629 12.7725 3.84278 10.7319L0.967773 12.947C2.42687 15.8022 5.39004 17.7612 8.8165 17.7612Z' fill='%234CAF50' /%3E%3Cpath d='M17.4612 7.21823H16.7511V7.18164H8.81641V10.7082H13.7989C13.4512 11.6852 12.8249 12.539 11.9973 13.164L11.9987 13.1631L14.7273 15.4721C14.5342 15.6475 17.6327 13.3531 17.6327 8.9449C17.6327 8.35377 17.5719 7.77674 17.4612 7.21823Z' fill='%231976D2' /%3E%3C/svg%3E%0A"
                         alt="google-btn" style="background-color: #fff; padding: 5px; border-radius: 50%;">
                     <span>&nbsp;Login with Google</span>
                 </div>
             </a>
-            <p class="RegisteBtn RegiBtn" style="text-decoration: underline;text-decoration-color: #098dc1;"><a href="#">Register Now</a></p>
+            <p class="RegisteBtn RegiBtn"><a>Register Now</a></p>
         </div>
+
         <div class="Form Register-form">
             <h2>Register</h2>
             <form method="POST" action="{{ url_for('register') }}" class="max-w-sm mx-auto" autocomplete="off">
                 <div class="input-box">
                     <i class='bx bxs-user'></i>
-                    <label for="#">Username</label>
                     <input type="text" placeholder="Enter Your Username*" name="username" required>
-
-
+                    <label for="#">Username</label>
                 </div>
                 <div class="input-box">
                     <i class='bx bxs-envelope'></i>
@@ -542,71 +807,176 @@
                 </div>
 
                 <div class="forgot-section">
-                    <span><a href="#">Forgot Password ?</a></span>
+                    <span><input type="checkbox" name="remember" class="checked"><label for="checked">&nbsp;Remember
+                            Me</label></span>
                 </div>
-                <button class="btn" class="loginBtn">Register</button>
+                <button type="submit" class="btn loginBtn">Register</button>
             </form>
             <p>Or</p>
-            <a href="/google/login">
-                <div class="social-media" style="display:  flex;align-items: center;"><img
+            <a href="/google/login" style="text-decoration: none;">
+                <div class="social-media" style="display: flex;align-items: center;"><img
                         src="data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M17.4612 7.21757H16.751V7.18098H8.81632V10.7075H13.7989C13.072 12.7604 11.1187 14.234 8.81632 14.234C5.89503 14.234 3.52653 11.8655 3.52653 8.94425C3.52653 6.02296 5.89503 3.65446 8.81632 3.65446C10.1648 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1385 0.12793 8.81632 0.12793C3.94751 0.12793 0 4.07544 0 8.94425C0 13.8131 3.94751 17.7606 8.81632 17.7606C13.6851 17.7606 17.6326 13.8131 17.6326 8.94425C17.6326 8.35311 17.5718 7.77609 17.4612 7.21757Z' fill='%23FFC107' /%3E%3Cpath d='M1.0166 4.84069L3.9132 6.96498C4.69697 5.02451 6.59513 3.65446 8.8164 3.65446C10.1649 3.65446 11.3916 4.16316 12.3257 4.9941L14.8194 2.5004C13.2448 1.03292 11.1386 0.12793 8.8164 0.12793C5.43005 0.12793 2.49333 2.03975 1.0166 4.84069Z' fill='%23FF3D00' /%3E%3Cpath d='M8.8165 17.7612C11.0938 17.7612 13.1629 16.8897 14.7274 15.4725L11.9988 13.1635C11.0839 13.8593 9.96591 14.2356 8.8165 14.2347C6.52338 14.2347 4.57629 12.7725 3.84278 10.7319L0.967773 12.947C2.42687 15.8022 5.39004 17.7612 8.8165 17.7612Z' fill='%234CAF50' /%3E%3Cpath d='M17.4612 7.21823H16.7511V7.18164H8.81641V10.7082H13.7989C13.4512 11.6852 12.8249 12.539 11.9973 13.164L11.9987 13.1631L14.7273 15.4721C14.5342 15.6475 17.6327 13.3531 17.6327 8.9449C17.6327 8.35377 17.5719 7.77674 17.4612 7.21823Z' fill='%231976D2' /%3E%3C/svg%3E%0A"
                         alt="google-btn" style="background-color: #fff; padding: 5px; border-radius: 50%;">
                     <span>&nbsp;Continue with Google</span>
                 </div>
             </a>
-            <p class="LoginBtn" style="text-decoration: underline;text-decoration-color: #098dc1;"><a href="#">Login Now</a></p>
+            <p class="LoginBtn"><a>Login Now</a></p>
         </div>
     </div>
+
     <script>
-        // Get references to the container and form elements
+        
         const container = document.querySelector(".container");
         const loginForm = document.querySelector('.login-form');
         const RegisterForm = document.querySelector('.Register-form');
         const RegiBtn = document.querySelector('.RegiBtn');
         const LoginBtn = document.querySelector('.LoginBtn');
+        const alerts = document.querySelectorAll('.alert'); 
 
-        // Function to switch to the Register form
+        
+        const formTimeline = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 0.7,
+                ease: 'power2.inOut'
+            }
+        });
+
+        
+        formTimeline
+            .to(loginForm, {
+                x: '-150%',
+                opacity: 0,
+                pointerEvents: 'none'
+            }, 0) 
+            .fromTo(RegisterForm, {
+                x: '150%',
+                opacity: 0,
+                pointerEvents: 'none'
+            }, {
+                x: '0%',
+                opacity: 1,
+                pointerEvents: 'all'
+            }, 0.1); 
+
+        
+        const showFlashMessages = () => {
+            
+            gsap.set(alerts, { opacity: 0, x: '100%' });
+
+            
+            gsap.to(alerts, {
+                opacity: 1,
+                x: '0%',
+                duration: 0.6,
+                ease: 'power2.out',
+                stagger: 0.2, 
+                onComplete: function () {
+                    
+                    const alertElement = this.targets()[0]; 
+                    gsap.to(alertElement, {
+                        opacity: 0,
+                        x: '100%',
+                        duration: 0.5,
+                        ease: 'power2.in',
+                        delay: 5, 
+                        onComplete: () => {
+                            alertElement.remove(); 
+                        }
+                    });
+                }
+            });
+
+            
+            alerts.forEach(alert => {
+                const closeButton = alert.querySelector('.btn-close');
+                if (closeButton) {
+                    closeButton.addEventListener('click', () => {
+                        gsap.killTweensOf(alert); 
+                        gsap.to(alert, {
+                            opacity: 0,
+                            x: '100%',
+                            duration: 0.5,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                alert.remove(); 
+                            }
+                        });
+                    });
+                }
+            });
+        };
+
+
+        
         const showRegisterForm = () => {
-            RegisterForm.classList.add('active');
+            
             loginForm.classList.add('active');
+            RegisterForm.classList.add('active');
+            formTimeline.play(); 
         };
 
-        // Function to switch to the Login form
+        
         const showLoginForm = () => {
-            RegisterForm.classList.remove('active');
+            
             loginForm.classList.remove('active');
+            RegisterForm.classList.remove('active');
+            formTimeline.reverse(); 
         };
 
-        // Add event listeners for the existing buttons to switch forms
+        
         RegiBtn.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default link behavior
+            event.preventDefault(); 
             showRegisterForm();
         });
 
         LoginBtn.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default link behavior
+            event.preventDefault(); 
             showLoginForm();
         });
 
-        // Check URL parameters on page load to determine which form to show initially
+        
         document.addEventListener('DOMContentLoaded', () => {
-            // Get the URL parameters
             const urlParams = new URLSearchParams(window.location.search);
-            // Get the value of the 'reg' parameter
             const regParam = urlParams.get('reg');
 
-            // If 'reg' parameter exists and is 'true', show the register form
             if (regParam === 'true') {
-                showRegisterForm();
+                
+                gsap.set(loginForm, {
+                    x: '-150%',
+                    opacity: 0,
+                    pointerEvents: 'none'
+                });
+                gsap.set(RegisterForm, {
+                    x: '0%',
+                    opacity: 1,
+                    pointerEvents: 'all'
+                });
+                
+                loginForm.classList.add('active');
+                RegisterForm.classList.add('active');
+
             } else {
-                // Otherwise, show the login form by default
-                showLoginForm();
+                
+                gsap.set(loginForm, {
+                    x: '0%',
+                    opacity: 1,
+                    pointerEvents: 'all'
+                });
+                gsap.set(RegisterForm, {
+                    x: '150%',
+                    opacity: 0,
+                    pointerEvents: 'none'
+                });
+                
+                loginForm.classList.remove('active');
+                RegisterForm.classList.remove('active');
             }
+
+            
+            showFlashMessages();
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
