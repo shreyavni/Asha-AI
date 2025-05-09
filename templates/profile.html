@@ -1,68 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asha A.I.🚀 Bot - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
     <style>
-        *{
-            height: min-content;
-        }
-        html,body{
+        
+        body {
+            font-family: "Poppins", sans-serif;
             overflow: hidden;
+            
+            padding-top: 90px;
+            
+            background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #f0abf3, #8ed6ea);
+            background-size: 400% 400%;
+            animation: gradientBG 25s ease infinite;
+            margin: 0;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #5e35b1 0%, #1e88e5 100%);
+            
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease, padding 0.3s ease;
+        }
+
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .navbar .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.7);
+        }
+
+        .navbar .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            
+            transition: width 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #fff;
+        }
+
+        .navbar .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        
+        .navbar .mobile-menu-button {
+            display: none;
+            
+            color: #e0e0e0;
+            font-size: 1.8rem;
+            cursor: pointer;
+            
+            margin-left: auto;
+        }
+
+        .navbar .mobile-menu {
+            display: none;
+            
+            width: 100%;
+            background: linear-gradient(to right, #5e35b1 0%, #1e88e5 100%);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            padding: 1rem 0;
+            margin-top: 0.5rem;
+            
+            box-sizing: border-box;
+            
+        }
+
+        .navbar .mobile-menu a {
+            display: block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 0.8rem 2.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .mobile-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                
+                padding: 1rem;
+                align-items: center;
+                
+                flex-wrap: wrap;
+                
+            }
+
+            .navbar .nav-links {
+                display: none;
+                
+            }
+
+            .navbar .mobile-menu-button {
+                display: block;
+                
+            }
+
+            .navbar .mobile-menu.active {
+                display: block;
+                
+            }
+        }
+
+
+        
+        .profile-img-large {
+            width: 100px;
+            
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            
+        }
+
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #098dc1;
+            
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0774a3;
+            
+        }
+
+        
+        .flash-message {
+            position: fixed;
+            top: 90px;
+            
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1050;
+            
+            opacity: 0;
+            
+            transition: opacity 0.5s ease-in-out;
+            max-width: 90%; 
+            text-align: center;
+        }
+
+        .flash-message.show {
+            opacity: 1;
         }
     </style>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    <script>
+        
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'asha-blue': '#098dc1',
+                        'asha-purple-light': '#e0c3fc',
+                        'asha-blue-light': '#8ec5fc',
+                        
+                        'asha-pink-accent': '#f417de',
+                        'text-on-primary-form': '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="font-sans antialiased">
-    <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">User Profile</h1>
-    {% include '_messages.html' %} {# Include the partial for flash messages #}
 
-    {% if user %}
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
-            <p class="text-gray-700 text-base">{{ user.username }}</p>
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-            <p class="text-gray-700 text-base">{{ user.email }}</p>
-        </div>
-        {# Display other profile fields if you added them #}
-        {% if user.first_name %}
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
-            <p class="text-gray-700 text-base">{{ user.first_name }}</p>
-        </div>
-        {% endif %}
-        {% if user.last_name %}
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">Last Name:</label>
-            <p class="text-gray-700 text-base">{{ user.last_name }}</p>
-        </div>
-        {% endif %}
-        {% if user.bio %}
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">Bio:</label>
-            <p class="text-gray-700 text-base">{{ user.bio }}</p>
-        </div>
-        {% endif %}
+<body class="bg-gradient-to-br from-asha-purple-light to-asha-blue-light font-poppins antialiased">
 
-        <div class="flex items-center justify-between mt-6">
-            <a href="{{ url_for('edit_profile') }}"  target="_top"
-                class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                <button>Edit Profile</button>
-            </a>
-            <a href="{{ url_for('logout') }}" target="_top"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-               <button>Logout</button> 
-            </a>
+    <nav class="navbar">
+        <a href="/" class="logo">Asha AI<span style="color: white;">🚀</span></a>
+        <div class="nav-links">
+            <a href="/chatapp">Chat</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="mobile-menu-button" id="mobile-menu-button">
+            <i class='bx bx-menu'></i>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="/chatapp">Chat</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div id="flash-message" class="flash-message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+    <div class="container min-h-screen flex items-center justify-center p-4">
+        <div
+            class="card bg-white shadow-2xl rounded-xl p-6 md:p-8 w-full max-w-sm transform transition-all duration-500 ease-in-out">
+            <div class="card-header flex flex-col items-center text-center">
+                <div class="avatar mb-4">
+                    {% if user and user.profile_pic %}
+                    <img src="{{ user.profile_pic }}" alt="Profile Picture"
+                        class="profile-img-large border-4 border-white shadow-md">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/default_profile.png') }}"
+                        alt="Default Profile Picture" class="profile-img-large border-4 border-white shadow-md"
+                        onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0C3FC/333333?text=User';">
+                    {% endif %}
+                </div>
+
+                <div class="profile-name mb-1">
+                    <h1 class="text-2xl md:text-3xl font-semibold text-gray-800">
+                        {{ user.name if user and user.name else user.username if user else 'Guest User' }}
+                    </h1>
+                </div>
+<div class="profile-email mb-3">
+    <p class="text-sm text-gray-500">{{ user.username if user and user.username else 'newUser' }}
+    </p>
+</div>
+
+<div class="profile-email mb-6">
+                    <p class="text-sm text-gray-500">{{ user.email if user and user.email else 'guest@example.com' }}
+                    </p>
+                </div>
+                
+            </div>
+
+            <div class="card-footer mt-auto">
+                <div class="options flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-3">
+                    <a href="/chatapp"
+                        class="home-btn w-full sm:w-auto bg-asha-blue hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out text-center text-base">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="{{ url_for('edit_profile') }}"
+                        class="edit-btn w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-medium py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out text-center text-base">
+                        <i class="fas fa-edit mr-2"></i>Edit Profile
+                    </a>
+                    <a href="#" onclick="l()"
+                        class="logout-btn w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-medium py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out text-center text-base">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Back
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    {% else %}
-    <p>User not found.</p>
-    {% endif %}
-</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active'); 
+            });
+        }
+
+        
+        function l() {
+            if (window.history) {
+                window.history.back()
+            } else {
+                document.location.href = "/"
+            }
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const flashMessage = document.getElementById('flash-message');
+
+            if (flashMessage) {
+                
+                setTimeout(() => {
+                    flashMessage.classList.add('show');
+                }, 100); 
+
+                
+                setTimeout(() => {
+                    flashMessage.classList.remove('show');
+                    
+                    setTimeout(() => {
+                         flashMessage.remove();
+                    }, 500); 
+                }, 5000); 
+            }
+
+            
+            let tl = gsap.timeline();
+
+            
+            tl.from(".card", {
+                duration: 0.7, 
+                opacity: 0, 
+                y: 50, 
+                scale: 0.9, 
+                ease: "power2.out", 
+            });
+
+            
+            tl.from(".avatar img", {
+                duration: 0.5,
+                opacity: 0,
+                y: 20,
+                scale: 0.8,
+                ease: "power2.out",
+            }, "-=0.4");
+
+            
+            tl.from(".profile-name h1", {
+                duration: 0.5,
+                opacity: 0,
+                y: 20,
+                ease: "power2.out",
+            }, "-=0.3");
+
+            
+            tl.from(".profile-email p", {
+                duration: 0.5,
+                opacity: 0,
+                y: 20,
+                ease: "power2.out",
+            }, "-=0.3");
+
+            
+            tl.from(".options a", {
+                duration: 0.5,
+                opacity: 1,
+                y: 20,
+                stagger: 0.2,
+                ease: "power2.out",
+            }, "-=0.2");
+        });
+    </script>
 </body>
+
 </html>
