@@ -152,6 +152,11 @@ def load_user(user_id):
 @app.route('/')
 def home():
     return render_template('home.html', user=current_user)
+
+@app.route('/learn')
+def learn():
+    return render_template('learn.html', user=current_user)
+
 @app.route('/chatapp')
 def index():
     """Serves the main chat page. Redirects to login if not authenticated."""
