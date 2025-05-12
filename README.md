@@ -20,7 +20,7 @@ GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET_HERE
       .venv\Scripts\activate
       
 ### 5. Install/update dependencies: 
-     pip install -r requirements txt
+     pip install -r requirements.txt
 
 ### 6. Run the Flask app: 
       python app.py
