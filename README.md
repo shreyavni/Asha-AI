@@ -17,7 +17,7 @@ GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET_HERE
 #### macOS/Linux: 
       source venv/bin/activate
 #### Windows: 
-      .venv\Scripts\activate
+      venv\Scripts\activate
       
 ### 5. Install/update dependencies: 
      pip install -r requirements.txt
